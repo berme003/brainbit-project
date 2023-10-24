@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #1E88E5;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column; /* Stack content vertically */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Center the play button */
+        #play-button {
+            background-color: #fff;
+            color: #1E88E5;
+            border: none;
+            padding: 20px 40px;
+            font-size: 24px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #play-button:hover {
+            background-color: #195fcb;
+        }
+
+        #video-container {
+            display: none; /* Initially hide the video container */
+        }
+
+        #video {
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+            max-width: 100%;
+            max-height: 80vh; /* Limit the video's height */
+            border-radius: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <button id="play-button" onclick="playVideo()">Play</button>
+
+    <div id="video-container">
+        <video id="video" width="auto" height="auto" onended="showInfo()">
+            <source src="movie.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <script>
+        var videoContainer = document.getElementById("video-container");
+        var playButton = document.getElementById("play-button");
+        var infoContainer = document.getElementById("info-container");
+
+        function playVideo() {
+            playButton.style.display = "none"; // Hide the play button
+            videoContainer.style.display = "block"; // Show the video container
+            var video = document.getElementById("video");
+            video.play();
+        }
+
+        function showInfo() {
+            infoContainer.style.display = "block"; // Show the info container after video ends
+        }
+    </script>
+</body>
+</html>
