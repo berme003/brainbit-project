@@ -7,7 +7,6 @@ def calcPercentDiff(n1, n2):
         raise ValueError("The value n1 or n2 cannot be 0 or negative")
     return abs(n1 - n2) / ((n1 + n2) / 2) * 100
 
-
 # Calculates the percent difference between two lists
 def calcPercentDiffList(l1, l2):
     if len(l1) != len(l2):
