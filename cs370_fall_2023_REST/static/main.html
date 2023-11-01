@@ -1,47 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <style>
-        body {
-            background-color: #1E88E5; /* Background hex color */
-            font-family: Arial, sans-serif; /* Custom font */
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaveMeet</title>
 
-        .menu-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-
-        .menu-title {
-            font-size: 36px;
-            color: #fff; /* Text color */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Drop shadow */
-            margin-bottom: 20px;
-        }
-
-        .menu-button {
-            background-color: #fff; /* Button background color */
-            border: none;
-            padding: 10px 20px;
-            font-size: 24px;
-            color: #1E88E5; /* Button text color */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Drop shadow */
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .menu-button:hover {
-            background-color: #195fcb; /* Hover background color */
-        }
-    </style>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <div class="menu-container">
-        <h1 class="menu-title">Main Menu</h1>
-        <a href="index.html" class="menu-button">Start</a>
+    <div class="left-panel">
+        <div class="lpanel__container">
+            <a href="/main.html" id="name">
+                <img src="assets/wm-logo.svg" alt="WaveMeet Logo" id="logo" draggable="false">WaveMeet
+            </a>
+            <div class="form-box">
+                <form>
+                    <div class="input-group">
+                        <div class="input-field">
+                            <h2>Name</h2>
+                            <input type="name" placeholder=>
+                        </div>
+                        <div class="input-field">
+                            <h2>Email</h2>
+                            <input type="email">
+                        </div>
+
+                        <div class="input-group__row">
+                            <div class="input-field__row">
+                                <h2>Date of Birth</h2>
+                                <input type="date">
+                            </div>
+                            <div class="input-field__row">
+                                <h2>Gender</h2>
+                                <select id="gender" name="gender">
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="right-panel">
+        <div class="rpanel__container">
+            <h1>No More Swiping</h1>
+            <p>Matchmaking redefined through brainwave harmony! Process your real-time brain data to discover real connections.</p>
+        </div>
     </div>
 </body>
 </html>
