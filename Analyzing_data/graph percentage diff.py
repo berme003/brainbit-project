@@ -4,24 +4,38 @@ import matplotlib.pyplot as plt
 # Load the data from the CSV file
 data = pd.read_csv('percentage_difference.csv')
 
-# Separate the columns
-O1 = data['O1']
-O2 = data['O2']
-T3 = data['T3']
-T4 = data['T4']
+# Remove empty rows at the end of the dataframe
+data = data.dropna(how='all')
 
-# Create a line plot
-plt.figure(figsize=(10, 6))
-plt.plot(O1, label='O1')
-plt.plot(O2, label='O2')
-plt.plot(T3, label='T3')
-plt.plot(T4, label='T4')
+# Initialize dictionaries to store the counts of averages under the specified range for each column
+range_counts = {'O1': 0, 'O2': 0, 'T3': 0, 'T4': 0}
 
-# Add labels and legend
-plt.xlabel('Time')
-plt.ylabel('Values')
-plt.title('Sample Data')
-plt.legend()
+# Define the specified range for each column
+range_specifications = {'O1': (0, 30), 'O2': (0, 30), 'T3': (0, 30), 'T4': (0, 30)}
 
-# Show the plot
+# Calculate the total number of rows
+total_rows = len(data)
+
+# Iterate over each column
+for column in data.columns:
+    if column != 'Group':
+        # Get the specified range for the current column
+        min_range, max_range = range_specifications[column]
+
+        # Count the number of averages within the specified range
+        column_counts = data[(data[column] >= min_range) & (data[column] <= max_range)].shape[0]
+        range_counts[column] = column_counts
+
+# Create a bar chart to display the range counts for each column
+plt.figure(figsize=(8, 6))
+plt.bar(range(len(range_counts)), range_counts.values())
+plt.xticks(range(len(range_counts)), range_counts.keys())
+plt.xlabel('Columns')
+plt.ylabel('Number of Averages in Specified Range')
+plt.title('Number of Averages in Specified Range for Each Column')
 plt.show()
+
+# Display the total counts for each column
+for column, count in range_counts.items():
+    total = total_rows
+    print(f"Total number of averages in the specified range for {column}: {count} out of {total}")
