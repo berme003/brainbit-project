@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WaveMeet</title>
-
+    <link rel="icon" href="assets/wm-logo.svg" type="image/svg+xml">
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
@@ -16,9 +16,9 @@
             <div class="form-box">
                 <form>
                     <div class="input-group">
-                        <div class="input-field">
+                        <div class="input-field" id="nameField">
                             <h2>Name</h2>
-                            <input type="name" placeholder=>
+                            <input type="name">
                         </div>
                         <div class="input-field">
                             <h2>Email</h2>
@@ -26,20 +26,25 @@
                         </div>
 
                         <div class="input-group__row">
-                            <div class="input-field__row">
+                            <div class="input-field__row" id="dobField">
                                 <h2>Date of Birth</h2>
                                 <input type="date">
                             </div>
-                            <div class="input-field__row">
+                            <div class="input-field__row" id="genderField">
                                 <h2>Gender</h2>
-                                <select id="gender" name="gender">
+                                <select class="select" id="gender" name="gender">
                                     <option value="" disabled selected>Select an option</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
                                     <option value="other">Other</option>
+                                    <option value="nottosay">Prefer not to say</option>
                                 </select>
                             </div>
                         </div>
+                    </div>
+                    <div class="btn-field">
+                        <button type="button" id="signupBtn">Sign up</button>
+                        <button type="button" id="signinBtn" class="disable">Sign in</button>
                     </div>
                 </form>
             </div>
@@ -47,9 +52,38 @@
     </div>
     <div class="right-panel">
         <div class="rpanel__container">
-            <h1>No More Swiping</h1>
+            <h1>No More Swiping.</h1>
+            <img src="assets/heroLine.svg" alt="Line" class="heroLine" draggable="false">
             <p>Matchmaking redefined through brainwave harmony! Process your real-time brain data to discover real connections.</p>
         </div>
     </div>
+
+<script>
+
+let signupBtn = document.getElementById("signupBtn");
+let signinBtn = document.getElementById("signinBtn");
+let nameField = document.getElementById("nameField");
+let dobField = document.getElementById("dobField");
+let genderField = document.getElementById("genderField");
+
+signinBtn.onclick = function () {
+    nameField.style.maxHeight = "0";
+    dobField.style.maxHeight = "0";
+    genderField.style.maxHeight = "0";
+    signupBtn.classList.add("disable");
+    signinBtn.classList.remove("disable");
+}
+
+
+signupBtn.onclick = function () {
+    nameField.style.maxHeight = "100px";
+    dobField.style.maxHeight = "100px";
+    genderField.style.maxHeight = "100px";
+    signupBtn.classList.remove("disable");
+    signinBtn.classList.add("disable");
+}
+
+
+</script>
 </body>
 </html>

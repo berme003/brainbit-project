@@ -19,7 +19,7 @@ html, head, body {
     padding:0;
     background-color: #fff;
     height: 100vh;
-    width: 35%;
+    width: 40%;
     float: left;
     justify-content: center;
 }
@@ -27,13 +27,14 @@ html, head, body {
 .right-panel {
     background-color: #EEF2FF;
     height: 100vh;
-    width: 65%;
+    width: 60%;
     float: right;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin:0;
+    padding: 0;
 }
 
 .lpanel__container {
@@ -49,14 +50,14 @@ html, head, body {
     flex-direction: column;
     justify-content: center;
     align-items: left;
-    padding: 20%;
+    padding: 15%;
     margin: 0;
 }
 
 
 #name {
     color: #071228;
-    font-size: 3rem;
+    font-size: 3.25rem;
     text-decoration: none;
 
     display: flex;
@@ -65,18 +66,24 @@ html, head, body {
     justify-content: left;
 
     margin-right: 150px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 img {
     margin-right: 10px;
-    height: 40px;
+    height: 35px;
+}
+
+img.heroLine {
+    height:1.9vh;
+    position: absolute;
+    right: 223px;
+    top: 445px;
 }
 
 h1 {
     margin: 0;
     padding: 0;
-    text-align: left;
     color: #2e6aff;
     font-size: 6.5rem;
     font-weight: 100;
@@ -96,44 +103,55 @@ p {
     margin: 0;
     padding: 0;
     text-align: left;
-    font-size: 2.25rem;
+    font-size: 2.2rem;
+    width: 85%;
 }
 
 
 .form-box {
-    text-align: center;
-    /* background-color: lightgray; */
+    display: flex;
+    flex-direction: column;
 }
 
 .input-field__row {
-
+    
     display: flex;
     flex-direction: column;
     align-items: left;
     justify-content: left;
     margin-top: 0px;
     border-radius: 8px;
+
+    max-height: 100px;
+    transition: max-height .6s ease-in-out;
+    overflow: hidden;    
 }
 
 
 .input-field {
-    width: 95%;
-    background: #fff;
+    width: 100%;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: left;
     justify-content: left;
     margin: 20px 0;
-    
+
+    max-height: 100px;
+    transition: max-height .6s ease-in-out;
+    overflow: hidden;
 }
 
+
 input {
+    box-sizing: border-box;
     font-family: 'BerlinSansFB';
     font-weight: 100;
     font-size: 1.25rem;
+    color: #071228;
     width: 100%;
     background: transparent;
-    padding: 20px 10px;
+    padding: 15px 15px;
     border-radius: 8px;
     border: 2px solid #071228;
 }
@@ -147,6 +165,8 @@ input {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+
 }
 
 
@@ -158,9 +178,47 @@ select {
     background: transparent;
     border: 2px solid #071228;
     outline: 0;
-    padding: 20px 15px;
+    padding: 15px 15px;
     border-radius: 8px;
 
 }
 
+.btn-field {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
 
+.btn-field button {
+    flex-basis: 48%;
+    background: #2e6aff;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    outline: 0;
+    border-radius: 8px;
+    height: 60px;
+    margin-top: 50px;
+    font-family: 'BerlinSansFB', sans-serif;
+    font-weight: 100;
+    font-size: 1.25rem;
+    transition: background 1s;
+}
+
+.btn-field button:hover {
+    background: #2658d6;
+}
+
+.btn-field button.disable {
+    background: lightgray;
+    color: darkgray;
+}
+
+.btn-field button.disable:hover {
+    background: rgb(187, 187, 187);
+    color: rgb(145, 145, 145);
+}
+
+.input-field__row select.select {
+    color: #071228;
+}
