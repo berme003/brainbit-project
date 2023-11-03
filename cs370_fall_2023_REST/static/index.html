@@ -4,8 +4,14 @@
     <link rel = "stylesheet" href = "index.css">
 </head>
 <body>
+    <div class="top-panel">
+        <div class="tpanel__container">
+            <a href="/main.html" id="name">
+                <img src="assets/wm-logo.svg" alt="WaveMeet Logo" id="logo" draggable="false">WaveMeet
+            </a>
+        </div>
+    </div>
     <button id="play-button" onclick="playVideo()">Play</button>
-
     <div id="video-container">
         <video id="video" width="auto" height="auto" onended="showInfo()">
             <source src="movie.mp4" type="video/mp4">
