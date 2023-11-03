@@ -25,6 +25,7 @@ html, head, body {
 }
 
 .right-panel {
+    box-sizing: border-box;
     background-color: #EEF2FF;
     height: 100vh;
     width: 60%;
@@ -74,12 +75,6 @@ img {
     height: 35px;
 }
 
-img.heroLine {
-    height:1.9vh;
-    position: absolute;
-    right: 223px;
-    top: 445px;
-}
 
 h1 {
     margin: 0;
@@ -100,11 +95,12 @@ h2 {
 
 
 p {
+    
     margin: 0;
     padding: 0;
     text-align: left;
-    font-size: 2.2rem;
-    width: 85%;
+    font-size: 2.5rem;
+    width: 100%;
 }
 
 
@@ -156,6 +152,14 @@ input {
     border: 2px solid #071228;
 }
 
+input[type="date"] {
+    cursor: pointer;
+}
+
+input:hover, select:hover {
+    background-color: lightgray;
+    transition: 1s;
+}
 
 
 
@@ -180,8 +184,11 @@ select {
     outline: 0;
     padding: 15px 15px;
     border-radius: 8px;
-
+    cursor: pointer;
 }
+
+
+
 
 .btn-field {
     width: 100%;
@@ -221,4 +228,10 @@ select {
 
 .input-field__row select.select {
     color: #071228;
+}
+
+.heroPhrase {
+    text-align: left;
+    width: fit-content;
+    height: 10vh;
 }
