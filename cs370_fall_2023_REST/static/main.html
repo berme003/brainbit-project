@@ -18,17 +18,17 @@
                     <div class="input-group">
                         <div class="input-field" id="nameField">
                             <h2>Name</h2>
-                            <input type="name">
+                            <input type="name" id="nameInput">
                         </div>
-                        <div class="input-field">
+                        <div class="input-field" id="emailField">
                             <h2>Email</h2>
-                            <input type="email">
+                            <input type="email" id="emailInput">
                         </div>
 
                         <div class="input-group__row">
                             <div class="input-field__row" id="dobField">
                                 <h2>Date of Birth</h2>
-                                <input type="date">
+                                <input type="date" id="dobInput">
                             </div>
                             <div class="input-field__row" id="genderField">
                                 <h2>Gender</h2>
@@ -64,6 +64,7 @@ let signinBtn = document.getElementById("signinBtn");
 let nameField = document.getElementById("nameField");
 let dobField = document.getElementById("dobField");
 let genderField = document.getElementById("genderField");
+let emailField = document.getElementById("emailField");
 
 signinBtn.onclick = function () {
     nameField.style.maxHeight = "0";
@@ -80,6 +81,25 @@ signupBtn.onclick = function () {
     genderField.style.maxHeight = "100px";
     signupBtn.classList.remove("disable");
     signinBtn.classList.add("disable");
+
+    <!-- Save data -->
+    let data = {
+        "name": nameInput.value,
+        "dob": dobInput.value,
+        "gender": gender.value,
+        "email": emailInput.value
+    };
+
+    fetch('http://localhost:80/signup', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
 }
 
 

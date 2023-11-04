@@ -6,6 +6,7 @@ import sys
 import datetime
 import bcrypt
 import traceback
+import sqlite3
 
 from tools.eeg import get_head_band_sensor_object
 
@@ -44,7 +45,6 @@ def init_new_env():
 @app.route('/') #endpoint
 def index():
     return redirect('/static/main.html')
-
 
 @app.route("/secure_api/<proc_name>",methods=['GET', 'POST'])
 @token_required
@@ -91,7 +91,38 @@ def exec_proc(proc_name):
 
     return resp
 
+@app.route('/signup', methods=['POST'])
+def signup():
+    data = request.get_json()
+    
+    # Retrieves the user data
+    name = data['name'] 
+    dob = data['dob'] 
+    gender = data['gender']
+    email = data['email']
+    
+    # Connects to the database and save the user's information.
+    conn = sqlite3.connect('users.db')
+    cursor = conn.cursor()
+    cursor.execute(''' INSERT INTO users (name, dob, gender, email)
+                    VALUES (?,?,?,?)''', (name, dob, gender, email))
+    conn.commit()
+    conn.close()
+    print('The user data has been saved to the database.')     
+    
+    return json_response(status_=200 ,data="Success")
 
 if __name__ == '__main__':
+    # Create the user database if doesn't exist
+    conn = sqlite3.connect('users.db')
+    cur = conn.cursor()
+    cur.execute(''' CREATE TABLE IF NOT EXISTS users(
+                    email TEXT PRIMARY KEY, 
+                    name text NOT NULL,
+                    dob DATE NOT NULL, 
+                    gender TEXT NOT NULL
+                )''')
+    conn.close()
+    
     app.run(host='0.0.0.0', port=80)
 
