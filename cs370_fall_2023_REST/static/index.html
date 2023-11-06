@@ -1,33 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel = "stylesheet" href = "index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaveMeet</title>
+    <link rel="icon" href="assets/wm-logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-    <button id="play-button" onclick="playVideo()">Play</button>
+    <div class="left-panel">
+        <div class="lpanel__container">
+            <a href="/" id="name">
+                <img src="assets/wm-logo.svg" alt="WaveMeet Logo" id="logo" draggable="false">WaveMeet
+            </a>
+            <div class="form-box">
+                <form>
+                    <div class="input-group">
+                        <div class="input-field" id="nameField">
+                            <h2>Name</h2>
+                            <input type="name" id="nameInput" name="nameInput"required>
+                        </div>
+                        <div class="input-field">
+                            <h2>Email</h2>
+                            <input type="email" id="emailInput" name="emailInput">
+                        </div>
 
-    <div id="video-container">
-        <video id="video" width="auto" height="auto" onended="showInfo()">
-            <source src="movie.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+                        <div class="input-group__row">
+                            <div class="input-field__row" id="dobField">
+                                <h2>Date of Birth</h2>
+                                <input type="date" id="dobInput" name="dobInput">
+                            </div>
+                            <div class="input-field__row" id="genderField">
+                                <h2>Gender</h2>
+                                <select class="select" id="genderInput" name="genderInput">
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                    <option value="nottosay">Prefer not to say</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-field">
+                        <button type="submit" value="submit" id="signupBtn">Sign up</button>
+                        <button type="button" id="signinBtn" class="disable">Sign in</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="right-panel">
+        <div class="rpanel__container">
+            <img src="assets/heroPhrase.svg" alt="No More Swiping" class="heroPhrase" draggable="false">
+            <p>Matchmaking redefined through brainwave harmony! Process your real-time brain data to discover real connections.</p>
+        </div>
     </div>
 
-    <script>
-        var videoContainer = document.getElementById("video-container");
-        var playButton = document.getElementById("play-button");
-        var infoContainer = document.getElementById("info-container");
+<script src="/js/switchSignInUp.js"></script>
+<script>
+    var button = document.getElementById("signupBtn");
+    
+    button.addEventListener("click", function() {
+        window.location.href = "gettingStarted.html";
+    });
 
-        function playVideo() {
-            playButton.style.display = "none"; // Hide the play button
-            videoContainer.style.display = "block"; // Show the video container
-            var video = document.getElementById("video");
-            video.play();
-        }
+</script>
 
-        function showInfo() {
-            infoContainer.style.display = "block"; // Show the info container after video ends
-        }
-    </script>
 </body>
 </html>

@@ -3,32 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "stylesheet" href = "display.css">
-    <title>WaveMeet | Adjusting the Headband</title>
-    <link rel="icon" href="assets/wm-logo.svg" type="image/svg+xml">
+    <link rel = "stylesheet" href = "/css/display.css">
+    <title>WaveMeet</title>
+    <link rel="icon" href="/assets/wm-logo.svg" type="image/svg+xml">
 </head>
 <body>
     <div id="getReady">
         <div class="header">
-            <img src="assets/wm-logo.svg" alt="WaveMeet Logo" id="logo" draggable="false">
+            <a href="/" >
+                <img src="assets/wm-logo.svg" alt="WaveMeet Logo" id="logo" draggable="false">
+            </a>
         </div>
 
         <h2>Adjusting the Headband</h2>
         <img src="assets/headband.svg" alt="Headband" id="headband" draggable="false">
-        <p>Take the time to properly put on the headband before continuing</p>
+        <p>Ensure that the headband is put on properly before continuing</p>
 
         <div class="buttonFooter">
-            <a href="/main.html" id="main">
+            <a href="/gettingStarted.html" id="main">
                 <button id="back-button">Go Back</button>
             </a>
 
             <button id="play-button" onclick="playVideo()">Play</button>
         </div>
     </div>
-
-
-
-
 
 
     <div id="video-container">
@@ -55,6 +53,8 @@
         function showInfo() {
             infoContainer.style.display = "block"; // Show the info container after video ends
         }
+
+
     </script>
 </body>
 </html>

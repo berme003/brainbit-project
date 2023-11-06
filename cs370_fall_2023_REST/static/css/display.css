@@ -1,0 +1,144 @@
+@font-face {
+    font-family: 'BerlinSansFB';
+    src: url(/assets/BerlinSansFBReg.ttf);
+}
+
+body {
+    background-color: #EEF2FF;
+    margin: 0;
+    padding: 0;
+    font-family: 'BerlinSansFB', sans-serif;
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Center the play button */
+#play-button {
+    font-family: 'BerlinSansFB', sans-serif;
+    background-color: #2e6aff;
+    color: #fff;
+    border: none;
+    padding: 15px 90px;
+    font-size: 1.75rem;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+#play-button:hover {
+    transform: scale(0.9);
+    background-color: #2658d6;
+}
+
+#video-container {
+    display: none; /* Initially hide the video container */
+}
+
+#video {
+    border: 1px solid #071228;
+    max-width: 100%;
+    max-height: 65vh; /* Limit the video's height */
+    border-radius: 8px;
+}
+
+#getReady {
+    box-sizing: border-box;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    animation: transitionIn 0.75s;
+}
+
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#headband {
+    height: 25vh;
+    padding: 30px 15px;
+    align-self: center;
+    transition: .3s ease-in-out;
+}
+
+#headband:hover {
+    transform: scale(1.1);
+}
+
+
+h2 {
+    text-align: left;
+    color: #071228;
+    font-size: 3.25rem;
+    font-weight: 100;
+}
+
+.header {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo {
+    margin: 40px;
+    height: 35px;
+    transition: 0.3s ease-in-out;
+}
+
+#logo:hover {
+    transform: scale(0.9);
+}
+
+
+
+
+.buttonFooter {
+    box-sizing: border-box;
+    padding: 60px 50px;
+    bottom: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+p {
+    color: #071228;
+    margin: 0;
+    padding: 40px;
+    text-align: center;
+    font-size: 1.75rem;
+    width: 100%;
+}
+
+#back-button {
+    font-family: 'BerlinSansFB';
+    background: 0;
+    color: darkgrey;
+    border: none;
+    font-size: 1.75rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+#back-button:hover {
+    color: rgb(145, 145, 145);
+    transform: scale(0.9);
+}
