@@ -1,0 +1,37 @@
+import sqlite3
+
+def get_users(database_name='matching_db.db'): #get data base name
+    try:
+        with sqlite3.connect(database_name) as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT id, name, score FROM users") #change score to matchvalue
+            users = cursor.fetchall()
+        return users
+    except sqlite3.Error as e:
+        print(f"Error connecting to the database: {e}")
+        return []
+
+def match_users(users):
+    matched_pairs = []
+
+    # Sort users by score
+    sorted_users = sorted(users, key=lambda x: x[2]) 
+
+    # Match users with similar scores
+    for i in range(0, len(sorted_users) - 1, 2): # skips every 2 places
+        user1 = sorted_users[i]
+        user2 = sorted_users[i + 1]
+        matched_pairs.append((user1, user2))
+
+    return matched_pairs
+
+if __name__ == "__main__":
+    users = get_users()
+
+    if not users:
+        print("No users found or error retrieving users.")
+    else:
+        matched_pairs = match_users(users)
+
+        for pair in matched_pairs:
+            print(f"Match: {pair[0][1]} (Score: {pair[0][2]}) - {pair[1][1]} (Score: {pair[1][2]})") # prints two pairs with their score.
