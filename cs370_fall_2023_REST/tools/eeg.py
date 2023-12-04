@@ -5,6 +5,7 @@ from neurosdk.cmn_types import *
 
 from tools.logging import logger   
 
+import csv 
 
 #doing all this a the "module level" in "Demo" server mode it will work fine :)
 
@@ -13,6 +14,16 @@ def on_sensor_state_changed(sensor, state):
 
 def on_brain_bit_signal_data_received(sensor, data):
     logger.debug(data)
+    
+    file_name = 'eeg.csv' # name of csv file
+    
+    # Write data into csv file
+    with open(file_name, 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(data)
+        
+    # Print completion message
+    print(f"Data written to {file_name}")
 
 logger.debug("Create Headband Scanner")
 gl_scanner = Scanner([SensorFamily.SensorLEBrainBit])
