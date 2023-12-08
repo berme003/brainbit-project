@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WaveMeet</title>
-    <link rel="icon" href="assets/wm-logo.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="icon" href="/static/assets/wm-logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/static/index.css">
 </head>
 <body>
     <div class="left-panel">
@@ -52,12 +52,35 @@
     </div>
     <div class="right-panel">
         <div class="rpanel__container">
-            <img src="assets/heroPhrase.svg" alt="No More Swiping" class="heroPhrase" draggable="false">
+            <img src="/static/assets/heroPhrase.svg" alt="No More Swiping" class="heroPhrase" draggable="false">
             <p>Matchmaking redefined through brainwave harmony! Process your real-time brain data to discover real connections.</p>
         </div>
     </div>
 
-<script src="/js/switchSignInUp.js"></script>
+<script>
+let signupBtn = document.getElementById("signupBtn");
+let signinBtn = document.getElementById("signinBtn");
+let nameField = document.getElementById("nameField");
+let dobField = document.getElementById("dobField");
+let genderField = document.getElementById("genderField");
+
+signinBtn.onclick = function () {
+    nameField.style.maxHeight = "0";
+    dobField.style.maxHeight = "0";
+    genderField.style.maxHeight = "0";
+    signupBtn.classList.add("disable");
+    signinBtn.classList.remove("disable");
+}
+
+
+signupBtn.onclick = function () {
+    nameField.style.maxHeight = "100px";
+    dobField.style.maxHeight = "100px";
+    genderField.style.maxHeight = "100px";
+    signupBtn.classList.remove("disable");
+    signinBtn.classList.add("disable");
+}    
+</script>
 <script>
     var button = document.getElementById("signupBtn");
     

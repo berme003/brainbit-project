@@ -3,27 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "stylesheet" href = "/css/display.css">
+    <link rel = "stylesheet" href = "/static/display.css">
     <title>WaveMeet</title>
-    <link rel="icon" href="/assets/wm-logo.svg" type="image/svg+xml">
+    <link rel="icon" href="/static/assets/wm-logo.svg" type="image/svg+xml">
 </head>
 <body>
     <div id="getReady">
         <div class="header">
             <a href="/" >
-                <img src="assets/wm-logo.svg" alt="WaveMeet Logo" id="logo" draggable="false">
+                <img src="/static/assets/wm-logo.svg" alt="WaveMeet Logo" id="logo" draggable="false">
             </a>
         </div>
 
         <h2>Adjusting the Headband</h2>
-        <img src="assets/headband.svg" alt="Headband" id="headband" draggable="false">
+        <img src="/static/assets/headband.svg" alt="Headband" id="headband" draggable="false">
         <p>Ensure that the headband is put on properly before continuing</p>
 
         <div class="buttonFooter">
-            <a href="/gettingStarted.html" id="main">
-                <button id="back-button">Go Back</button>
-            </a>
-
+            <button id="back-button">Go Back</button>
             <button id="play-button" onclick="playVideo()">Play</button>
         </div>
     </div>
@@ -31,30 +28,40 @@
 
     <div id="video-container">
         <video id="video" width="auto" height="auto" onended="showInfo()" controls="showInfo">
-            <source src="/assets/movie.mp4" type="video/mp4">
+            <source src="/static/assets/movie.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
 
-    <script>
-        var videoContainer = document.getElementById("video-container");
-        var playButton = document.getElementById("play-button");
-        var infoContainer = document.getElementById("info-container");
-        var getReadyContainer = document.getElementById("getReady");
+<script>
+    var videoContainer = document.getElementById("video-container");
+    var playButton = document.getElementById("play-button");
+    var infoContainer = document.getElementById("info-container");
+    var getReadyContainer = document.getElementById("getReady");
 
-        function playVideo() {
-            getReadyContainer.style.display="none";
-            // playButton.style.display = "none"; // Hide the play button
-            videoContainer.style.display = "block"; // Show the video container
-            var video = document.getElementById("video");
-            video.play();
-        }
+    function playVideo() {
+        getReadyContainer.style.display="none";
+        // playButton.style.display = "none"; // Hide the play button
+        videoContainer.style.display = "block"; // Show the video container
+        var video = document.getElementById("video");
+        video.play();
+    }
 
-        function showInfo() {
-            infoContainer.style.display = "block"; // Show the info container after video ends
-        }
+    function showInfo() {
+        infoContainer.style.display = "block"; // Show the info container after video ends
+    }
 
 
-    </script>
+</script>
+
+<script>
+    var button = document.getElementById("back-button");
+    
+    button.addEventListener("click", function() {
+        window.location.href = "gettingStarted.html";
+    });
+
+</script>
+
 </body>
 </html>

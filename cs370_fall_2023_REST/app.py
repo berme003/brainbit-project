@@ -8,8 +8,8 @@ import bcrypt
 import traceback
 import sqlite3
 
-from tools.eeg import get_head_band_sensor_object
-
+# Comment out when running app.py with no headband, Traceback error.
+# from tools.eeg import get_head_band_sensor_object
 
 from db_con import get_db_instance, get_db
 
@@ -44,7 +44,7 @@ def init_new_env():
 #So.. we redirect to the endpoint we want to load the base page
 @app.route('/') #endpoint
 def index():
-    return redirect('/static/main.html')
+    return redirect('/static/index.html')
 
 @app.route("/secure_api/<proc_name>",methods=['GET', 'POST'])
 @token_required

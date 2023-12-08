@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "stylesheet" href = "/css/gettingStarted.css">
+    <link rel = "stylesheet" href = "/static/gettingStarted.css">
     <title>WaveMeet</title>
-    <link rel="icon" href="/assets/wm-logo.svg" type="image/svg+xml">
+    <link rel="icon" href="/static/assets/wm-logo.svg" type="image/svg+xml">
 </head>
 <body>
     <div id="gettingStarted">
@@ -29,11 +29,20 @@
             <a href="/" id="main">
                 <button id="back-button">Go Back</button>
             </a>
-            <a href="/display.html" id="">
-                <button id="continue-button">Continue</button>
-            </a>
+            <button id="continue-button">Continue</button>
         </div>
     </div>
+
+
+<script>
+    var button = document.getElementById("continue-button");
+    
+    button.addEventListener("click", function() {
+        window.location.href = "display.html";
+    });
+
+</script>
+
 
 </body>
 </html>
