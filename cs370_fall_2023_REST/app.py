@@ -68,6 +68,26 @@ def exec_secure_proc(proc_name):
 
     return resp
 
+def sort_by_closest_avgnum(database_path, table_name, target_value): #sort_by_closest_avgnum(database_path, table_name, target_value)
+    connection = sqlite3.connect(database_path)
+
+    cursor = connection.cursor()
+
+    try:
+        cursor.execute(f"SELECT * FROM {table_name}")
+        rows = cursor.fetchall()
+
+        rows_with_difference = [(row, abs(row[4] - target_value)) for row in rows]
+
+        sorted_rows = sorted(rows_with_difference, key=lambda x: x[1])
+
+        print(f"\nSorting by the closest 'AvgNum' value to {target_value}:")
+        for row, _ in sorted_rows:
+            print(row)
+
+    finally:
+        cursor.close()
+        connection.close()
 
 
 @app.route("/open_api/<proc_name>",methods=['GET', 'POST'])
