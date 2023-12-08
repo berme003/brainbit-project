@@ -88,7 +88,9 @@ signinBtn.onclick = function () {
 }
 
 
-signupBtn.onclick = function () {
+signupBtn.onclick = function (event) {
+    event.preventDefault(); // some magic to make it work? something about submitting a form.
+
     if (!isSignUpClicked) { // if the signup button hasnt been clicked yet, hide the sign in view.
         nameField.style.maxHeight = "100px";
         dobField.style.maxHeight = "100px";
