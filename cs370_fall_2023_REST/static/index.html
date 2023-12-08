@@ -14,25 +14,25 @@
                 <img src="assets/wm-logo.svg" alt="WaveMeet Logo" id="logo" draggable="false">WaveMeet
             </a>
             <div class="form-box">
-                <form>
+                <form id="form">
                     <div class="input-group">
                         <div class="input-field" id="nameField">
                             <h2>Name</h2>
-                            <input type="name" id="nameInput" name="nameInput"required>
+                            <input type="name" id="nameInput" name="nameInput" required>
                         </div>
                         <div class="input-field">
                             <h2>Email</h2>
-                            <input type="email" id="emailInput" name="emailInput">
+                            <input type="email" id="emailInput" name="emailInput" required>
                         </div>
 
                         <div class="input-group__row">
                             <div class="input-field__row" id="dobField">
                                 <h2>Date of Birth</h2>
-                                <input type="date" id="dobInput" name="dobInput">
+                                <input type="date" id="dobInput" name="dobInput" required>
                             </div>
                             <div class="input-field__row" id="genderField">
                                 <h2>Gender</h2>
-                                <select class="select" id="genderInput" name="genderInput">
+                                <select class="select" id="genderInput" name="genderInput" required>
                                     <option value="" disabled selected>Select an option</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
@@ -64,31 +64,70 @@ let nameField = document.getElementById("nameField");
 let dobField = document.getElementById("dobField");
 let genderField = document.getElementById("genderField");
 
+let form = document.querySelector('form');
+
+/* 
+    Pressing Sign Up hides the Sign in View, vice versa...
+
+    When pressing Sign up the second time, we want to 
+    actually store the user's input to DB
+
+*/
+let isSignUpClicked = false; //declare a flag when signup is clicked the second time
+
+
+// let isSignInClicked = false; // will add this sign in view when sign up works properly
+
 signinBtn.onclick = function () {
     nameField.style.maxHeight = "0";
     dobField.style.maxHeight = "0";
     genderField.style.maxHeight = "0";
     signupBtn.classList.add("disable");
     signinBtn.classList.remove("disable");
+    isSignUpClicked = false;
 }
 
 
 signupBtn.onclick = function () {
-    nameField.style.maxHeight = "100px";
-    dobField.style.maxHeight = "100px";
-    genderField.style.maxHeight = "100px";
-    signupBtn.classList.remove("disable");
-    signinBtn.classList.add("disable");
-}    
+    if (!isSignUpClicked) { // if the signup button hasnt been clicked yet, hide the sign in view.
+        nameField.style.maxHeight = "100px";
+        dobField.style.maxHeight = "100px";
+        genderField.style.maxHeight = "100px";
+        signupBtn.classList.remove("disable");
+        signinBtn.classList.add("disable");
+        isSignUpClicked = true;
+    } else { // if the signup button has been clicked once, now log the second input 
+
+        let data = {
+            "name": document.getElementById("nameInput").value,
+            "dob": document.getElementById("dobInput").value,
+            "gender": document.getElementById("genderInput").value,
+            "email": document.getElementById("emailInput").value
+        };
+
+        fetch('http://localhost:80/signup', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error(error));
+    }
+}
+
 </script>
-<script>
+
+<!-- <script>
     var button = document.getElementById("signupBtn");
     
     button.addEventListener("click", function() {
         window.location.href = "gettingStarted.html";
     });
 
-</script>
+</script> -->
 
 </body>
 </html>
