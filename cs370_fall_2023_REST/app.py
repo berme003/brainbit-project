@@ -68,7 +68,13 @@ def exec_secure_proc(proc_name):
 
     return resp
 
-def sort_by_closest_avgnum(database_path, table_name, target_value): #sort_by_closest_avgnum(database_path, table_name, target_value)
+def sort_by_closest_avgnum(database_path, table_name, target_value, output_file): #sort_by_closest_avgnum(database_path, table_name, target_value, output_file)
+#    database_path = "your_database.db"
+#    table_name = "your_table"
+#    target_value = INSERTUSERAVGNUMHERE  # Replace with your desired target value
+#    output_file = "output.txt"
+#    sort_by_closest_avgnum(database_path, table_name, target_value, output_file)
+
     connection = sqlite3.connect(database_path)
 
     cursor = connection.cursor()
@@ -81,9 +87,13 @@ def sort_by_closest_avgnum(database_path, table_name, target_value): #sort_by_cl
 
         sorted_rows = sorted(rows_with_difference, key=lambda x: x[1])
 
-        print(f"\nSorting by the closest 'AvgNum' value to {target_value}:")
-        for row, _ in sorted_rows:
-            print(row)
+        with open(output_file, 'w') as file:
+            file.write(f"\nSorting by the closest 'AvgNum' value to {target_value}:\n")
+            for row, _ in sorted_rows:
+                # Write each row to the file
+                file.write(str(row) + '\n')
+
+        print(f"Sorting results have been saved to {output_file}")
 
     finally:
         cursor.close()
@@ -116,14 +126,14 @@ def signup():
     # Handles the preflight request, the OPTIONS request.
     if request.method == 'OPTIONS':
         resp = app.make_default_options_response()
-        
+
         headers = resp.headers
-        headers['Access-Control-Allow-Origin'] = '*' 
+        headers['Access-Control-Allow-Origin'] = '*'
         headers['Access-Control-Allow-Methods'] = 'POST'
         headers['Access-Control-Allow-Headers'] = 'Content-Type'
-        
+
         return resp
-    
+
     data = request.get_json()
     
     # Retrieves the user data
