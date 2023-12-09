@@ -111,8 +111,19 @@ def exec_proc(proc_name):
 
     return resp
 
-@app.route('/signup', methods=['POST'])
+@app.route('/signup', methods=['POST', 'OPTIONS'])
 def signup():
+    # Handles the preflight request, the OPTIONS request.
+    if request.method == 'OPTIONS':
+        resp = app.make_default_options_response()
+        
+        headers = resp.headers
+        headers['Access-Control-Allow-Origin'] = '*' 
+        headers['Access-Control-Allow-Methods'] = 'POST'
+        headers['Access-Control-Allow-Headers'] = 'Content-Type'
+        
+        return resp
+    
     data = request.get_json()
     
     # Retrieves the user data
