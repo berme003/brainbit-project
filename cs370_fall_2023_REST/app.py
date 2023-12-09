@@ -90,7 +90,7 @@ def sort_by_closest_avgnum(database_path, table_name, target_value, output_file)
 
         with open(output_file, 'w') as file:
             file.write(f"\nSorting by the closest 'AvgNum' value to {target_value}:\n")
-            for row, _ in sorted_rows:
+            for row, _ in sorted_rows[1:]:
                 # Write each row to the file
                 file.write(str(row) + '\n')
 

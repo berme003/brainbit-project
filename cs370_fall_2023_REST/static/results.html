@@ -28,9 +28,9 @@
                 <div id="suggestions">
                     <div id="nameDiv">
                         <p id="nameLabel">Name</p>
-                        <div id="names">Thomas Jefferson</div>
-                        <div id="names">Abraham Lincoln</div>
-                        <div id="names">George Washington</div>
+						<div id="names-1"></div>
+						<div id="names-2"></div>
+						<div id="names-3"></div>
                     </div>
                     <div id="similarityDiv">
                         <p id="similarityLabel">Similarity</p>
@@ -59,6 +59,31 @@
         window.location.href = "index.html";
     });
 
+</script>
+
+<script>
+    var exitBtn = document.getElementById("exit-button");
+
+    exitBtn.addEventListener("click", function () {
+        window.location.href = "index.html";
+    });
+
+    fetch('users_table.txt')
+        .then(response => response.text())
+        .then(data => {
+            const lines = data.split('\n');
+
+            for (let i = 0; i < 3; i++) {
+                const nameElement = document.getElementById(`names-${i + 1}`);
+                if (nameElement) {
+                    const name = lines[i].split('\t')[1];
+                    nameElement.textContent = name;
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Error reading users_table.txt', error);
+        });
 </script>
 
 </body>
