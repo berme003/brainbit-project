@@ -9,16 +9,23 @@
 </head>
 <body>
     <div id="getReady">
+        <!-- logo header -->
         <div class="header">
             <a href="/" >
                 <img src="/static/assets/wm-logo.svg" alt="WaveMeet Logo" id="logo" draggable="false">
             </a>
         </div>
 
+        <!-- page title text -->
         <h2>Adjusting the Headband</h2>
+
+        <!-- content -->
         <img src="/static/assets/headband.svg" alt="Headband" id="headband" draggable="false">
+
+        <!-- subtext -->
         <p>Ensure that the headband is put on properly before continuing</p>
 
+        <!-- footer buttons -->
         <div class="buttonFooter">
             <button id="back-button">Go Back</button>
             <button id="play-button" onclick="playVideo()">Play</button>
@@ -27,10 +34,26 @@
 
 
     <div id="video-container">
+
+        <!-- logo header -->
+        <div class="header">
+            <a href="/" >
+                <img src="/static/assets/wm-logo.svg" alt="WaveMeet Logo" id="logo" draggable="false">
+            </a>
+        </div>
+
+        <!-- content -->
         <video id="video" width="auto" height="auto" onended="showInfo()" controls="showInfo">
             <source src="/static/assets/movie.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
+
+        <!-- footer buttons -->
+        <div class="buttonFooter">
+            <button id="back-button"></button>
+            <button id="done-button">Done</button>
+        </div>
+
     </div>
 
 <script>
@@ -42,7 +65,7 @@
     function playVideo() {
         getReadyContainer.style.display="none";
         // playButton.style.display = "none"; // Hide the play button
-        videoContainer.style.display = "block"; // Show the video container
+        videoContainer.style.display = "flex"; // Show the video container
         var video = document.getElementById("video");
         video.play();
     }
@@ -55,11 +78,17 @@
 </script>
 
 <script>
-    var button = document.getElementById("back-button");
+    var backBtn = document.getElementById("back-button");
+    var doneBtn = document.getElementById("done-button");
     
-    button.addEventListener("click", function() {
+    backBtn.addEventListener("click", function() {
         window.location.href = "gettingStarted.html";
     });
+
+    doneBtn.addEventListener("click", function() {
+        window.location.href = "results.html";
+    });
+
 
 </script>
 
