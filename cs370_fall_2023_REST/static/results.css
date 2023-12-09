@@ -1,0 +1,232 @@
+@font-face {
+    font-family: 'BerlinSansFB';
+    src: url(/static/assets/BerlinSansFBReg.ttf);
+}
+
+body {
+    background-color: #EEF2FF;
+    margin: 0;
+    padding: 0;
+    font-family: 'BerlinSansFB', sans-serif;
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+#results {
+    box-sizing: border-box;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    animation: transitionIn 0.75s;
+}
+
+#twoCards {
+    box-sizing: border-box;
+    overflow: hidden;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+}
+
+#nameSection {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#nameDiv, #similarityDiv {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin:0;
+}
+
+
+#nameLabel {
+    box-sizing: border-box;
+    color: #071228;
+    margin: 0;
+    padding-bottom: 20px;
+    text-align: left;
+    font-size: 1.75rem;    
+}
+
+#similarityLabel {
+    box-sizing: border-box;
+    color: #071228;
+    margin: 0;
+    padding-bottom: 20px;
+    text-align: right;
+    font-size: 1.75rem;    
+}
+
+
+#names {
+    box-sizing: border-box;
+    color: #071228;
+    margin: 0;
+    padding-bottom: 20px;
+    text-align: left;
+    font-size: 2.5rem;
+}
+
+#scores {
+    box-sizing: border-box;
+    color: #071228;
+    margin: 0;
+    padding-bottom: 20px;
+    text-align: right;
+    font-size: 2.5rem;
+}
+
+#yourResults {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    height: 450px;
+    width: 350px;
+    background-color: #2e6aff;
+    border-radius: 10px;
+    border: 1px solid #071228;
+}
+
+#matches {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#titleBox {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #071228;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height:100px;
+    width: 650px;
+    background-color: #071228;
+}
+
+
+
+
+#suggestions{
+    padding: 50px;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: space-between;
+    border: 1px solid #071228;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height:350px;
+    width: 650px;
+    background-color: #fff;
+}
+
+
+/* Center the play button */
+#exit-button {
+    font-family: 'BerlinSansFB', sans-serif;
+    background-color: #2e6aff;
+    color: #fff;
+    border: none;
+    padding: 15px 90px;
+    font-size: 1.75rem;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+#exit-button:hover {
+    transform: scale(0.9);
+    background-color: #2658d6;
+}
+
+
+
+h2 {
+    text-align: left;
+    color: #071228;
+    font-size: 3.25rem;
+    font-weight: 100;
+}
+
+.header {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo {
+    margin: 40px;
+    height: 35px;
+    transition: 0.3s ease-in-out;
+}
+
+#logo:hover {
+    transform: scale(0.9);
+}
+
+
+.buttonFooter {
+    box-sizing: border-box;
+    padding: 60px 50px;
+    bottom: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+p {
+    box-sizing: border-box;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+#score {
+    box-sizing: border-box;
+    color: #071228;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 10rem;
+    line-height: 80%;
+    padding-bottom: 20px;
+}
+
+#back-button {
+    font-family: 'BerlinSansFB';
+    background: 0;
+    color: darkgrey;
+    border: none;
+    font-size: 1.75rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+#back-button:hover {
+    color: rgb(145, 145, 145);
+    transform: scale(0.9);
+}

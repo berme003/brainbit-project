@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "/static/results.css">
+    <title>WaveMeet</title>
+    <link rel="icon" href="/static/assets/wm-logo.svg" type="image/svg+xml">
+</head>
+<body>
+    <div id="results">
+        <!-- logo header -->
+        <div class="header">
+            <a href="/" >
+                <img src="/static/assets/wm-logo.svg" alt="WaveMeet Logo" id="logo" draggable="false">
+            </a>
+        </div>
+        <!-- content -->
+        <div id="twoCards">
+            <div id="yourResults">
+                <p>Your Result</p>
+                <p id="score">76</p>
+            </div>
+            <div id="matches">
+                <div id="titleBox">
+                    <p>Suggested Matches</p>
+                </div>
+                <div id="suggestions">
+                    <div id="nameDiv">
+                        <p id="nameLabel">Name</p>
+                        <div id="names">Thomas Jefferson</div>
+                        <div id="names">Abraham Lincoln</div>
+                        <div id="names">George Washington</div>
+                    </div>
+                    <div id="similarityDiv">
+                        <p id="similarityLabel">Similarity</p>
+                        <div id="scores">100</div>
+                        <div id="scores">96</div>
+                        <div id="scores">94</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- footer buttons -->
+        <div class="buttonFooter">
+            <button id="back-button"></button>
+            <button id="exit-button">Exit</button>
+        </div>
+
+    </div>
+
+<script>
+    var exitBtn = document.getElementById("exit-button");
+    
+    exitBtn.addEventListener("click", function() {
+        window.location.href = "index.html";
+    });
+
+</script>
+
+</body>
+</html>
