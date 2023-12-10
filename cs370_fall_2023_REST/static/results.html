@@ -34,9 +34,9 @@
                     </div>
                     <div id="similarityDiv">
                         <p id="similarityLabel">Similarity</p>
-                        <div id="scores">100</div>
-                        <div id="scores">96</div>
-                        <div id="scores">94</div>
+                        <div id="scores-1"></div>
+                        <div id="scores-2"></div>
+                        <div id="scores-3"></div>
                     </div>
                 </div>
             </div>
@@ -75,15 +75,21 @@
 
             for (let i = 0; i < 3; i++) {
                 const nameElement = document.getElementById(`names-${i + 1}`);
+                const scoreElement = document.getElementById(`scores-${i + 1}`);
                 if (nameElement) {
                     const name = lines[i].split('\t')[1];
                     nameElement.textContent = name;
+                }
+                if (scoreElement) {
+                    const score = lines[i].split('\t')[4];
+                    scoreElement.textContent = score;
                 }
             }
         })
         .catch(error => {
             console.error('Error reading users_table.txt', error);
         });
+
 </script>
 
 </body>

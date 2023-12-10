@@ -70,7 +70,7 @@ body {
 }
 
 
-#names {
+#names-1, #names-2, #names-3 {
     box-sizing: border-box;
     color: #071228;
     margin: 0;
@@ -79,7 +79,7 @@ body {
     font-size: 2.5rem;
 }
 
-#scores {
+#scores-1, #scores-2, #scores-3 {
     box-sizing: border-box;
     color: #071228;
     margin: 0;

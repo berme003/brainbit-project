@@ -1,4 +1,3 @@
 john.doe@example.com	John Doe	1990-01-01	Male	32
-john.doe@example.com	Cross Cross	1990-01-01	Male	73
 john.doe@example.com	Jill Doe	1990-01-01	Male	12
 john.doe@example.com	Jane Doe	1990-01-01	Male	72
