@@ -145,13 +145,13 @@ def signup():
     
     # Brain data 
     num = random.uniform(0.75, 1.25)
-    eeg = round(num, 2)
+    AvgNum = round(num, 2)
     
     # Connects to the database and save the user's information.
     conn = sqlite3.connect('users.db')
     cursor = conn.cursor()
-    cursor.execute(''' INSERT INTO users (name, dob, gender, email, eeg)
-                    VALUES (?,?,?,?,?)''', (name, dob, gender, email, eeg))
+    cursor.execute(''' INSERT INTO users (name, dob, gender, email, AvgNum)
+                    VALUES (?,?,?,?,?)''', (name, dob, gender, email, AvgNum))
     conn.commit()
     conn.close()
     print('The user data has been saved to the database.')     
@@ -167,7 +167,7 @@ if __name__ == '__main__':
                     name text NOT NULL,
                     dob DATE NOT NULL, 
                     gender TEXT NOT NULL,
-                    eeg DECIMAL(6,2)
+                    AvgNum DECIMAL(6,2)
                 )''')
     conn.close()
     
