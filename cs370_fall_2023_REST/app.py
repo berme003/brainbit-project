@@ -8,6 +8,7 @@ import bcrypt
 import traceback
 import sqlite3
 import random
+from user_utils import generate_random_avgnum
 
 # Comment out when running app.py with no headband, Traceback error.
 # from tools.eeg import get_head_band_sensor_object
@@ -144,19 +145,29 @@ def signup():
     email = data['email']
     
     # Brain data 
-    num = random.uniform(0.75, 1.25)
-    AvgNum = round(num, 2)
+    mapped_value = generate_random_avgnum()
     
     # Connects to the database and save the user's information.
     conn = sqlite3.connect('users.db')
     cursor = conn.cursor()
     cursor.execute(''' INSERT INTO users (name, dob, gender, email, AvgNum)
-                    VALUES (?,?,?,?,?)''', (name, dob, gender, email, AvgNum))
+                    VALUES (?,?,?,?,?)''', (name, dob, gender, email, mapped_value))
+    conn.commit()
+
+     # Retrieve the user's data with the mapped AvgNum
+    cursor.execute("SELECT email, name, dob, gender, ROUND(AvgNum) AS MappedAvgNum FROM users WHERE email=?", (email,))
+    user_data = cursor.fetchone()
+
+  # Update the MappedAvgNum column in the database
+    cursor.execute("UPDATE users SET MappedAvgNum=? WHERE email=?", (user_data[4], email))
+
+    # Commit the changes
     conn.commit()
     conn.close()
+
     print('The user data has been saved to the database.')     
     
-    return json_response(status_=200 ,data="Success")
+    return json_response(status_=200, data={"Success": True, "MappedAvgNum": int(user_data[4]})
 
 if __name__ == '__main__':
     # Create the user database if doesn't exist

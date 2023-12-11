@@ -1,33 +1,41 @@
 import pandas as pd
 
-# Load the data from the CSV files
-user1_data = pd.read_csv('parsed_data.csv')
-user2_data = pd.read_csv('parsed_data2.csv')
+def load_and_clean_data(file_name):
+    data = pd.read_csv(file_name)
+    num_columns = min(len(data.columns), len(user2_data.columns))
+    data = data[data.columns[:num_columns]]
+    return data
 
-# Ensure both dataframes have the same number of columns
-num_columns = min(len(user1_data.columns), len(user2_data.columns))
-user1_data = user1_data[user1_data.columns[:num_columns]]
-user2_data = user2_data[user2_data.columns[:num_columns]]
+def calculate_column_means(data):
+    mean_values = data.mean()
+    return mean_values
 
-# Calculate the mean for each column in both dataframes
-mean_values_user1 = user1_data.mean()
-mean_values_user2 = user2_data.mean()
+def replace_zero_values(data, mean_values):
+    for column in data.columns:
+        data[column] = data[column].apply(lambda x: mean_values[column] if x == 0 else x)
+    return data
 
-# Replace 0 values in both dataframes with the respective column mean
-for column in user1_data.columns:
-    user1_data[column] = user1_data[column].apply(lambda x: mean_values_user1[column] if x == 0 else x)
-    user2_data[column] = user2_data[column].apply(lambda x: mean_values_user2[column] if x == 0 else x)
+def calculate_percentage_difference(user1_data, user2_data):
+    results = {}
+    for column in user1_data.columns:
+        numerator = abs(abs(user1_data[column]) - abs(user2_data[column]))
+        denominator = abs(abs(user1_data[column]) + abs(user2_data[column])) / 2
+        results[column] = (numerator / denominator) * 100
+    return pd.DataFrame(results)
 
-# Calculate the percentage difference for each electrode with absolute values
-results = {
-    'O1': (abs(abs(user1_data['O1']) - abs(user2_data['O1'])) / (abs(abs(user1_data['O1']) + abs(user2_data['O1'])) / 2)) * 100,
-    'O2': (abs(abs(user1_data['O2']) - abs(user2_data['O2'])) / (abs(abs(user1_data['O2']) + abs(user2_data['O2'])) / 2)) * 100,
-    'T3': (abs(abs(user1_data['T3']) - abs(user2_data['T3'])) / (abs(abs(user1_data['T3']) + abs(user2_data['T3'])) / 2)) * 100,
-    'T4': (abs(abs(user1_data['T4']) - abs(user2_data['T4'])) / (abs(abs(user1_data['T4']) + abs(user2_data['T4'])) / 2)) * 100
-}
+def save_results_to_csv(result_df, output_file):
+    result_df.to_csv(output_file, index=False)
+    print(f"Data has been saved to {output_file}.")
 
-# Create a DataFrame to store the results
-result_df = pd.DataFrame(results)
+# Example usage
+user1_data = load_and_clean_data('parsed_data.csv')
+user2_data = load_and_clean_data('parsed_data2.csv')
 
-# Save the results to a new CSV file
-result_df.to_csv('percentage_difference.csv', index=False)
+mean_values_user1 = calculate_column_means(user1_data)
+mean_values_user2 = calculate_column_means(user2_data)
+
+user1_data = replace_zero_values(user1_data, mean_values_user1)
+user2_data = replace_zero_values(user2_data, mean_values_user2)
+
+result_df = calculate_percentage_difference(user1_data, user2_data)
+save_results_to_csv(result_df, 'percentage_difference.csv')
