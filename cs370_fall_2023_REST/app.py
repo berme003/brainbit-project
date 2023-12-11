@@ -168,7 +168,54 @@ def signup():
     print('The user data has been saved to the database.')     
     
     return json_response(status_=200, data={"Success": True, "MappedAvgNum": int(user_data[4]})
+    
+#will return email if it exisits in data base
+    def email_exists(email, database_name='users.db'):
+    
+        with sqlite3.connect(users.db) as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT id FROM users WHERE email = ?", (email,))
+            user_id = cursor.fetchone()
+        return user_id is not None
 
+
+
+
+
+    #trying to get input from sign in 
+    @app.route('/signin', methods=['POST', 'OPTIONS'])
+    def signup():
+    # Handles the preflight request, the OPTIONS request.
+        if request.method == 'OPTIONS':
+            resp = app.make_default_options_response()
+
+        headers = resp.headers
+        headers['Access-Control-Allow-Origin'] = '*'
+        headers['Access-Control-Allow-Methods'] = 'POST'
+        headers['Access-Control-Allow-Headers'] = 'Content-Type'
+
+        return resp
+
+    data = request.get_json()
+    
+    #gets the email to check
+    emailcheck = data.get('email',None)
+    # if it does exisit it will be redirected.
+    
+    #checking to see if something was found 
+    if email_to_check is not None:
+        email_exists_result = email_exists(emailcheck)
+        print("checking email!")
+        return redirect(url_for('results'))
+    
+    else :#checking if something was found
+        print("nothing was found!")
+    
+    return jsonify({"message": "Invalid request"})
+
+@app.route('/results')
+def results():
+    return "Results Page"
 if __name__ == '__main__':
     # Create the user database if doesn't exist
     conn = sqlite3.connect('users.db')
