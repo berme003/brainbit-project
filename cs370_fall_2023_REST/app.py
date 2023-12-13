@@ -167,7 +167,7 @@ def signup():
 
     print('The user data has been saved to the database.')     
     
-    return json_response(status_=200, data={"Success": True, "MappedAvgNum": int(user_data[4]})
+    return json_response(status_=200, data={"Success": True, "MappedAvgNum": int(user_data[4])})
     
 #will return email if it exisits in data base
     def email_exists(email, database_name='users.db'):
